@@ -67,15 +67,13 @@ alias enginessh="ssh -i ~/www/dn.pem ubuntu@engine.datanitro.com"
 alias edgessh="ssh -i ~/www/dn.pem ubuntu@edgexl.com"
 alias caffssh="ssh -i ~/Dropbox/caffeine/www/caffeine.pem ubuntu@caffeinatedanalytics.com"
 alias dbssh="ssh -i ~/Dropbox/caffeine/www/caffeine.pem ubuntu@getdashback.com"
-alias vivessh="ssh deploy@insights.vive.co -p 837"
-function vivescp() { scp -P 837 $1 deploy@insights.vive.co:s/home/deploy/www/insights.vive.co/; }
 alias macmssh="ssh -i /Users/bl/Dropbox/caffeine/www/caffeine.pem ubuntu@macmillan.caffeinatedanalytics.com"
 
 # prompt for overwrite
 alias cp="cp -i"
 alias mv="mv -i"
 
-# Setting PATH for Python 2.7
+# Settings PATH for Python 2.7
 PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 # adding GEOS to path for shapely library
 PATH="/usr/local/Cellar/geos/3.4.2/bin:${PATH}"
@@ -96,20 +94,20 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # autoenv
-source ~/Dropbox/bash_scripts/autoenv.sh
+source ~/bash_scripts/autoenv.sh
 
 # heroku
 alias deploy="git push heroku master" # this is so cool!
 
 # virtualenv management
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-alias venv="pyvenv virtualenv venv"
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
+# alias venv="pyvenv virtualenv venv"
 
 # misc
 alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
-eval "$(thefuck --alias)"
+#eval "$(thefuck --alias)"
 
 # emacs settings
 #if [ "$EMACS" == "t" ]; then
