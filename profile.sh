@@ -12,7 +12,7 @@ export TERM=xterm-256color
 # fi
 
 # drop username from bash prompt
-PS1="\h:\W \$ "
+export PS1="\u: \W \$ "
 
 # Set architecture flags
 export ARCHFLAGS="-arch x86_64"
@@ -59,7 +59,7 @@ function rgrep() { grep -rni "$1" --include=".*.$2" .;}
 function pygrep() { rgrep "$1" py; }
 function cgrep() { rgrep "$1" h; rgrep "$1" c; rgrep "$1" cpp; rgrep "$1" def; }
 function clgrep() { rgrep "$1" clj; rgrep "$1" java; }
-
+function gogrep() { rgrep "$1" go; }
 
 # ssh
 alias dnssh="ssh -i ~/www/dn.pem ubuntu@datanitro.com"
