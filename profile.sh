@@ -27,7 +27,6 @@ alias pull="git pull --all"
 alias gmv="git mv"
 function makebranch() { git checkout -b $1; git push --set-upstream origin $1; }
 function cleanbranch() { git branch -d $1; git push origin :$1; }
-alias lsnp='ls | grep -v ".pyc"'
 
 # go
 export GOPATH=~/go
