@@ -80,6 +80,7 @@ PATH="/usr/local/Cellar/geos/3.4.2/bin:${PATH}"
 export PATH
 
 # navigation
+alias sd="cd ~/go/src/code.uber.internal/infra/statsdex/"
 alias edge="cd ~/edge"
 alias dn="cd ~/dn"
 alias www="cd ~/www"
