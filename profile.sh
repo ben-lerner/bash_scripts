@@ -49,7 +49,6 @@ alias cprofile="python -m cProfile"
 alias d="deactivate"
 export PYLINTRC=~/Dropbox/.pylintrc
 
-## need to run brew install coreutils for this to work:
 alias ls="gls --ignore='*.pyc' --color"
 alias nls="/bin/ls" # normal ls
 
