@@ -107,9 +107,11 @@ alias test_shell="echo 'shell profile loaded'"
 # find
 alias f="find . -type f -name"
 
+
 # git prompt
 source ~/bash_scripts/git-prompt.sh
 
-# set prompt with git
-export PROMPT_COMMAND='__git_ps1 "\u:\W" "\\\$ "'
+#export GIT_PS1_STATESEPARATOR="ababab" # doesn't work?
 export GIT_PS1_SHOWCOLORHINTS="true"
+export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose
+export PROMPT_COMMAND='__git_ps1 "\u:\W" "\\\$ "'
