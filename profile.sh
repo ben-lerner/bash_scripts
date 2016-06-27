@@ -52,13 +52,6 @@ export PYLINTRC=~/Dropbox/.pylintrc
 alias ls="gls --ignore='*.pyc' --color"
 alias nls="/bin/ls" # normal ls
 
-# Grep
-function rgrep() { grep -rni "$1" --include=".*.$2" .;}
-function pygrep() { rgrep "$1" py; }
-function cgrep() { rgrep "$1" h; rgrep "$1" c; rgrep "$1" cpp; rgrep "$1" def; }
-function clgrep() { rgrep "$1" clj; rgrep "$1" java; }
-function gogrep() { rgrep "$1" go; }
-
 # ssh
 alias dnssh="ssh -i ~/www/dn.pem ubuntu@datanitro.com"
 alias enginessh="ssh -i ~/www/dn.pem ubuntu@engine.datanitro.com"
