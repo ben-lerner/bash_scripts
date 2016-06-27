@@ -1,2 +1,1 @@
-brew install tree
-brew install coreutils
+brew install coreutis tree ag
