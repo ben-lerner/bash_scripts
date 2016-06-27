@@ -106,3 +106,6 @@ alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
 #   export TERM=dumb
 #fi
 alias test_shell="echo 'shell profile loaded'"
+
+# find
+alias f="find . -type f -name"
