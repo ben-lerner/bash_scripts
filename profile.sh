@@ -11,9 +11,6 @@ export TERM=xterm-256color
 #   . $(brew --prefix)/etc/bash_completion
 # fi
 
-# drop username from bash prompt
-export PS1="\u: \W \$ "
-
 # Set architecture flags
 export ARCHFLAGS="-arch x86_64"
 # Ensure user-installed binaries take precedence
@@ -109,3 +106,10 @@ alias test_shell="echo 'shell profile loaded'"
 
 # find
 alias f="find . -type f -name"
+
+# git prompt
+source ~/bash_scripts/git-prompt.sh
+
+# set prompt with git
+export PROMPT_COMMAND='__git_ps1 "\u:\W" "\\\$ "'
+export GIT_PS1_SHOWCOLORHINTS="true"
