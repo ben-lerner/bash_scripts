@@ -68,7 +68,6 @@ PATH="/usr/local/Cellar/geos/3.4.2/bin:${PATH}"
 export PATH
 
 # navigation
-alias sd="cd ~/go/src/code.uber.internal/infra/statsdex/"
 alias edge="cd ~/edge"
 alias dn="cd ~/dn"
 alias www="cd ~/www"
@@ -103,6 +102,7 @@ alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
 #   export TERM=dumb
 #fi
 alias test_shell="echo 'shell profile loaded'"
+alias emacsclient=ec
 
 # find
 alias f="find . -type f -name"

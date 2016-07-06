@@ -500,7 +500,7 @@ __git_ps1 ()
 		fi
 	fi
 
-	local z="${GIT_PS1_STATESEPARATOR-" "}"
+	# local z="${GIT_PS1_STATESEPARATOR-" "}" # this doesn't work, doing it by hand
 
 	# NO color option unless in PROMPT_COMMAND mode
 	if [ $pcmode = yes ] && [ -n "${GIT_PS1_SHOWCOLORHINTS-}" ]; then
@@ -514,7 +514,12 @@ __git_ps1 ()
 	fi
 
 	local f="$w$i$s$u"
-	local gitstring="$c$b${f:+$z$f}$r$p"
+	if [[ -z $p ]]; then # string is empty
+		local gitstring="$c$b${f:+$z$f}$r$p"
+	else
+		local gitstring="$c$b${f:+$z$f}$r $p" ## added space to gitstring
+	fi
+
 
 	if [ $pcmode = yes ]; then
 		if [ "${__git_printf_supports_v-}" != yes ]; then
