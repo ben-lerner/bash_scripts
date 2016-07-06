@@ -102,7 +102,15 @@ alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
 #   export TERM=dumb
 #fi
 alias test_shell="echo 'shell profile loaded'"
+
 alias emacsclient=ec
+export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
+
+# ~/bin/edit:
+##!/bin/bash
+##exec emacsclient --alternate-editor="" -nt "$@"
+# this opens an editor in the current frame. Make sure "EDITOR" isn't
+# overwritten later.
 
 # find
 alias f="find . -type f -name"
@@ -110,6 +118,8 @@ alias f="find . -type f -name"
 
 # git prompt
 source ~/bash_scripts/git-prompt.sh
+
+
 
 #export GIT_PS1_STATESEPARATOR="ababab" # doesn't work?
 export GIT_PS1_SHOWCOLORHINTS="true"
