@@ -9,4 +9,5 @@ ln -s /Applications/Emacs.app/Contents/MacOS/bin/emacsclient /usr/local/bin
 
 sudo ln -s /Applications/MIT\:GNU\ Scheme.app/Contents/Resources /usr/local/lib/mit-scheme-x86-64
 sudo ln -s /usr/local/lib/mit-scheme-x86-64/mit-scheme /usr/local/bin/scheme
+sudo ln -s /usr/local/lib/mit-scheme-x86-64/mit-scheme /usr/local/bin/mit-scheme
 
