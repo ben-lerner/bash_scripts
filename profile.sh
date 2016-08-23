@@ -108,12 +108,9 @@ export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 
 # ~/bin/edit:
 ##!/bin/bash
-##exec emacsclient --alternate-editor="" -nt "$@"
+##exec emacsclient --alternate-editor="" -c "$@"
 # this opens an editor in the current frame. Make sure "EDITOR" isn't
 # overwritten later.
-
-# for now
-export EDITOR=nano
 
 # find
 alias f="find . -type f -name"
