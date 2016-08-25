@@ -108,7 +108,8 @@ export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 
 # ~/bin/edit:
 ##!/bin/bash
-##exec emacsclient --alternate-editor="" -c "$@"
+#exec emacsclient --alternate-editor="" -c "$@"
+
 # this opens an editor in the current frame. Make sure "EDITOR" isn't
 # overwritten later.
 
