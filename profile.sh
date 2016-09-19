@@ -57,6 +57,9 @@ alias caffssh="ssh -i ~/Dropbox/caffeine/www/caffeine.pem ubuntu@caffeinatedanal
 alias dbssh="ssh -i ~/Dropbox/caffeine/www/caffeine.pem ubuntu@getdashback.com"
 alias macmssh="ssh -i /Users/bl/Dropbox/caffeine/www/caffeine.pem ubuntu@macmillan.caffeinatedanalytics.com"
 
+# util
+alias diff="colordiff"
+
 # prompt for overwrite
 alias cp="cp -i"
 alias mv="mv -i"
@@ -108,7 +111,7 @@ export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 
 # ~/bin/edit:
 ##!/bin/bash
-##exec emacsclient --alternate-editor="" "$@"
+#exec emacsclient --alternate-editor="" "$@"
 # this opens an editor in the current frame. Make sure "EDITOR" isn't
 # overwritten later.
 
