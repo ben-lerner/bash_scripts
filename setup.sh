@@ -1,4 +1,5 @@
 brew install coreutis tree ag
+brew install colordiff
 
 # emacs
 ln -s /Applications/Emacs.app/Contents/MacOS/bin/emacsclient /usr/local/bin

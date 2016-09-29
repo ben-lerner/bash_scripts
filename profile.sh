@@ -49,6 +49,10 @@ export PYLINTRC=~/Dropbox/.pylintrc
 alias ls="gls --ignore='*.pyc' --color"
 alias nls="/bin/ls" # normal ls
 
+
+# util
+alias diff="colordiff"
+
 # prompt for overwrite
 alias cp="cp -i"
 alias mv="mv -i"
@@ -100,7 +104,7 @@ export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 
 # ~/bin/edit:
 ##!/bin/bash
-##exec emacsclient --alternate-editor="" "$@"
+#exec emacsclient --alternate-editor="" "$@"
 # this opens an editor in the current frame. Make sure "EDITOR" isn't
 # overwritten later.
 
