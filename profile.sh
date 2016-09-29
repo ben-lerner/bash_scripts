@@ -49,14 +49,6 @@ export PYLINTRC=~/Dropbox/.pylintrc
 alias ls="gls --ignore='*.pyc' --color"
 alias nls="/bin/ls" # normal ls
 
-# ssh
-alias dnssh="ssh -i ~/www/dn.pem ubuntu@datanitro.com"
-alias enginessh="ssh -i ~/www/dn.pem ubuntu@engine.datanitro.com"
-alias edgessh="ssh -i ~/www/dn.pem ubuntu@edgexl.com"
-alias caffssh="ssh -i ~/Dropbox/caffeine/www/caffeine.pem ubuntu@caffeinatedanalytics.com"
-alias dbssh="ssh -i ~/Dropbox/caffeine/www/caffeine.pem ubuntu@getdashback.com"
-alias macmssh="ssh -i /Users/bl/Dropbox/caffeine/www/caffeine.pem ubuntu@macmillan.caffeinatedanalytics.com"
-
 # prompt for overwrite
 alias cp="cp -i"
 alias mv="mv -i"
@@ -95,7 +87,7 @@ alias deploy="git push heroku master" # this is so cool!
 
 # misc
 alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
-#eval "$(thefuck --alias)"
+eval "$(thefuck --alias)"
 
 # emacs settings
 #if [ "$EMACS" == "t" ]; then
@@ -108,8 +100,7 @@ export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 
 # ~/bin/edit:
 ##!/bin/bash
-#exec emacsclient --alternate-editor="" -c "$@"
-
+##exec emacsclient --alternate-editor="" "$@"
 # this opens an editor in the current frame. Make sure "EDITOR" isn't
 # overwritten later.
 
