@@ -12,3 +12,5 @@ sudo ln -s /Applications/MIT\:GNU\ Scheme.app/Contents/Resources /usr/local/lib/
 sudo ln -s /usr/local/lib/mit-scheme-x86-64/mit-scheme /usr/local/bin/scheme
 sudo ln -s /usr/local/lib/mit-scheme-x86-64/mit-scheme /usr/local/bin/mit-scheme
 
+#arc
+arc set-config base master
