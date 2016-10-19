@@ -7,7 +7,7 @@ WD=$(pwd)
 for DIR in 'bash_scripts' 'todo' 'emacs' 'sicp'; do
     echo updating $DIR
     cd ~/$DIR
-    git commit -a "update"
+    git commit -am "auto-update"
     git pull
     git push
 done
