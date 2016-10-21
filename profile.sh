@@ -115,8 +115,6 @@ alias f="find . -type f -name"
 # git prompt
 source ~/bash_scripts/git-prompt.sh
 
-
-
 #export GIT_PS1_STATESEPARATOR="ababab" # doesn't work?
 export GIT_PS1_SHOWCOLORHINTS="true"
 export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose
