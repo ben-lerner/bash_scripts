@@ -121,3 +121,6 @@ export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose
 export PROMPT_COMMAND='__git_ps1 "\u:\W" "\\\$ "'
 
 alias update="bash ~/bash_scripts/update.sh"
+
+# ssh
+ssh-add ~/ssh/* 2> /dev/null
