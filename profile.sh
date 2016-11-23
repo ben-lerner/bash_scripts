@@ -14,7 +14,7 @@ export TERM=xterm-256color
 # Set architecture flags
 export ARCHFLAGS="-arch x86_64"
 # Ensure user-installed binaries take precedence
-export PATH=/usr/local/bin:~/bin:/usr/texbin:$PATH:~/jython2.5.3
+export PATH=/usr/local/bin:~/bin:/usr/texbin:$PATH
 
 alias add="git add"
 alias gc="git commit -am"
@@ -124,3 +124,6 @@ alias update="bash ~/bash_scripts/update.sh"
 
 # ssh
 ssh-add ~/ssh/* 2> /dev/null
+
+# Rust
+export PATH=$PATH:/Users/bl/.cargo/bin
