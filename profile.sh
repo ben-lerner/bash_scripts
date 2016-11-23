@@ -102,15 +102,8 @@ alias test_shell="echo 'shell profile loaded'"
 alias emacsclient=ec
 export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 
-# ~/bin/edit:
-##!/bin/bash
-#exec emacsclient --alternate-editor="" "$@"
-# this opens an editor in the current frame. Make sure "EDITOR" isn't
-# overwritten later.
-
 # find
 alias f="find . -type f -name"
-
 
 # git prompt
 source ~/bash_scripts/git-prompt.sh
@@ -118,7 +111,7 @@ source ~/bash_scripts/git-prompt.sh
 #export GIT_PS1_STATESEPARATOR="ababab" # doesn't work?
 export GIT_PS1_SHOWCOLORHINTS="true"
 export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose
-export PROMPT_COMMAND='__git_ps1 "\u:\W" "\\\$ "'
+export PROMPT_COMMAND='__git_ps1 "\u:\W" " λ "'
 
 alias update="bash ~/bash_scripts/update.sh"
 
