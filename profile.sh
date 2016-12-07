@@ -22,6 +22,7 @@ function gcp() { git commit -am "$1"; git push; }
 alias push="git push"
 alias pull="git pull --all"
 alias gmv="git mv"
+alias continue="git rebase --continue"
 function makebranch() { git checkout -b $1; git push --set-upstream origin $1; }
 function cleanbranch() { git branch -d $1; git push origin :$1; }
 
