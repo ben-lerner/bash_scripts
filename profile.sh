@@ -25,6 +25,7 @@ alias gmv="git mv"
 alias continue="git rebase --continue"
 function makebranch() { git checkout -b $1; git push --set-upstream origin $1; }
 function cleanbranch() { git branch -d $1; git push origin :$1; }
+alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
 
 # go
 export GOPATH=~/go
