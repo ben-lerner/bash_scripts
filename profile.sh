@@ -26,7 +26,7 @@ alias continue="git rebase --continue"
 function makebranch() { git checkout -b $1; git push --set-upstream origin $1; }
 function cleanbranch() { git branch -d $1; git push origin :$1; }
 alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
-function land() { arc land $(git_branch_name) --onto master }
+function land() { arc land $(git_branch_name) --onto master; }
 
 # go
 export GOPATH=~/go
@@ -86,21 +86,12 @@ source ~/bash_scripts/autoenv.sh
 # heroku
 alias deploy="git push heroku master" # this is so cool!
 
-# virtualenv management
-# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-# eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
-# alias venv="pyvenv virtualenv venv"
-
 # misc
 alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
 eval "$(thefuck --alias)"
 ulimit -n 8192
 
 # emacs settings
-#if [ "$EMACS" == "t" ]; then
-#   export TERM=dumb
-#fi
 alias test_shell="echo 'shell profile loaded'"
 
 alias emacsclient=ec
