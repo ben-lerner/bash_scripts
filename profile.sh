@@ -1,5 +1,5 @@
 # set .bash_profile to:
-# source ~/Dropbox/bash_scripts/profile
+# source ~/bash_scripts/profile
 
 # for emacs, set .bashrc to source ~/.bashprofile; cd
 
@@ -16,8 +16,12 @@ export ARCHFLAGS="-arch x86_64"
 # Ensure user-installed binaries take precedence
 export PATH=/usr/local/bin:~/bin:/usr/texbin:$PATH
 
+# git
+alias m="git checkout master"
+alias co="git checkout"
 alias add="git add"
 alias gc="git commit -am"
+alias br="git branch"
 function gcp() { git commit -am "$1"; git push; }
 alias push="git push"
 alias pull="git pull --all"
@@ -27,6 +31,8 @@ function makebranch() { git checkout -b $1; git push --set-upstream origin $1; }
 function cleanbranch() { git branch -d $1; git push origin :$1; }
 alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
 function land() { arc land $(git_branch_name) --onto master; }
+alias rebm="git rebase master"
+alias set_upstream="git push --set-upstream origin $(git_branch_name)"
 
 # go
 export GOPATH=~/go
@@ -107,9 +113,6 @@ source ~/bash_scripts/git-prompt.sh
 export GIT_PS1_SHOWCOLORHINTS="true"
 export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose
 export PROMPT_COMMAND='__git_ps1 "\u:\W" " [λ] "'
-
-# ssh
-ssh-add ~/ssh/* 2> /dev/null
 
 # Rust
 export PATH=$PATH:/Users/bl/.cargo/bin
