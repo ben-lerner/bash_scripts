@@ -18,7 +18,7 @@ export PATH=/usr/local/bin:~/bin:/usr/texbin:$PATH
 
 # git
 alias m="master"
-qalias co="git checkout"
+alias co="git checkout"
 alias add="git add"
 alias gc="git commit -am"
 alias br="git branch"
@@ -32,7 +32,7 @@ function cleanbranch() { git branch -d $1; git push origin :$1; }
 alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
 function land() { arc land $(git_branch_name) --onto master; }
 alias rb="git rebase"
-alias set_upstream="git push --set-upstream origin $(git_branch_name)"
+function set_upstream() { git push --set-upstream origin $(git_branch_name); }
 
 # go
 export GOPATH=~/go
@@ -55,9 +55,8 @@ alias cprofile="python -m cProfile"
 alias d="deactivate"
 export PYLINTRC=~/Dropbox/.pylintrc
 
-alias ls="gls --ignore='*.pyc' --color"
-alias nls="/bin/ls" # normal ls
-
+# alias ls="gls --ignore='*.pyc' --color"
+# alias nls="/bin/ls" # normal ls
 
 # util
 alias diff="colordiff"
@@ -88,12 +87,10 @@ eval "$(thefuck --alias)"
 ulimit -n 8192
 
 # emacs settings
-alias test_shell="echo 'shell profile loaded'"
-
 alias emacsclient=ec
 export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 
-# find
+# find by name
 alias f="find . -type f -name"
 
 # git prompt
