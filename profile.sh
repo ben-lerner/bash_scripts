@@ -18,7 +18,7 @@ export PATH=/usr/local/bin:~/bin:/usr/texbin:$PATH
 
 # git
 alias m="master"
-alias co="git checkout"
+qalias co="git checkout"
 alias add="git add"
 alias gc="git commit -am"
 alias br="git branch"
@@ -71,16 +71,6 @@ PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 # adding GEOS to path for shapely library
 PATH="/usr/local/Cellar/geos/3.4.2/bin:${PATH}"
 export PATH
-
-# navigation
-alias edge="cd ~/edge"
-alias dn="cd ~/dn"
-alias www="cd ~/www"
-alias vive="cd ~/vive"
-alias dbw="cd ~/Dropbox/caffeine/dashback/dashback_site/www"
-alias mm="cd ~/macm-demand-planning"
-alias hr="cd ~/Dropbox/job_search/interview_prep/hackerrank"
-alias cdemacs="cd ~/Dropbox/emacs"
 
 # colors!
 export CLICOLOR=1
