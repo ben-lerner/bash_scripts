@@ -17,7 +17,7 @@ export ARCHFLAGS="-arch x86_64"
 export PATH=/usr/local/bin:~/bin:/usr/texbin:$PATH
 
 # git
-alias m="git checkout master"
+alias m="master"
 alias co="git checkout"
 alias add="git add"
 alias gc="git commit -am"
@@ -31,7 +31,7 @@ function makebranch() { git checkout -b $1; git push --set-upstream origin $1; }
 function cleanbranch() { git branch -d $1; git push origin :$1; }
 alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
 function land() { arc land $(git_branch_name) --onto master; }
-alias rebm="git rebase master"
+alias rb="git rebase"
 alias set_upstream="git push --set-upstream origin $(git_branch_name)"
 
 # go
