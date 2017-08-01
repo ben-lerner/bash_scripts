@@ -1,7 +1,9 @@
 # set .bash_profile to:
-# source ~/bash_scripts/profile
+# source ~/Dropbox/bash_scripts/profile
 
 # for emacs, set .bashrc to source ~/.bashprofile; cd
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # colorization
 export TERM=xterm-256color
@@ -16,27 +18,36 @@ export ARCHFLAGS="-arch x86_64"
 # Ensure user-installed binaries take precedence
 export PATH=/usr/local/bin:~/bin:/usr/texbin:$PATH
 
+# ripgrep
+export PATH=/Users/bl/ripgrep/target/release:$PATH
+alias rg="rg -i"
+
 # git
 alias m="master"
+alias gdiff="git diff"
 alias co="git checkout"
 alias add="git add"
 alias gc="git commit -am"
 alias br="git branch"
+alias branch_times='for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
 function gcp() { git commit -am "$1"; git push; }
 alias push="git push"
 alias pull="git pull --all"
+alias merge="git merge"
 alias gmv="git mv"
 alias continue="git rebase --continue"
-function makebranch() { git checkout -b $1; git push --set-upstream origin $1; }
-function cleanbranch() { git branch -d $1; git push origin :$1; }
 alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
+alias log="git log --abbrev-commit"
 function land() { arc land $(git_branch_name) --onto master; }
 alias rb="git rebase"
-function set_upstream() { git push --set-upstream origin $(git_branch_name); }
+function set_upstream() { push --set-upstream origin $(git_branch_name); }
+function makebranch() { co -b $1; set_upstream; }
+function cleanbranch() { br -d $1; push origin :$1; }
+
 
 # go
 export GOPATH=~/go
-export GOROOT=/usr/local/opt/go/libexec #GOROOT
+export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # clojure
@@ -58,8 +69,12 @@ export PYLINTRC=~/Dropbox/.pylintrc
 # alias ls="gls --ignore='*.pyc' --color"
 # alias nls="/bin/ls" # normal ls
 
+alias c="clear"
+
 # util
 alias diff="colordiff"
+# tunnel host port
+function ssht() { pkill -f $2:localhost:$2; ssh -fNL $2:localhost:$2 $1; }
 
 # prompt for overwrite
 alias cp="cp -i"
@@ -76,7 +91,7 @@ export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
 # autoenv
-source ~/bash_scripts/autoenv.sh
+source "$DIR/autoenv.sh"
 
 # heroku
 alias deploy="git push heroku master" # this is so cool!
@@ -94,7 +109,7 @@ export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 alias f="find . -type f -name"
 
 # git prompt
-source ~/bash_scripts/git-prompt.sh
+source "$DIR/git-prompt.sh"
 
 #export GIT_PS1_STATESEPARATOR="ababab" # doesn't work?
 export GIT_PS1_SHOWCOLORHINTS="true"
@@ -102,4 +117,4 @@ export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose
 export PROMPT_COMMAND='__git_ps1 "\u:\W" " [λ] "'
 
 # Rust
-export PATH=$PATH:/Users/bl/.cargo/bin
+# export PATH=$PATH:/Users/bl/.cargo/bin

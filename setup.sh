@@ -14,3 +14,6 @@ sudo ln -s /usr/local/lib/mit-scheme-x86-64/mit-scheme /usr/local/bin/mit-scheme
 
 #arc
 arc set-config base master
+
+# git
+git config --global merge.conflictstyle diff3
