@@ -1,5 +1,5 @@
 # set .bash_profile to:
-# source ~/Dropbox/bash_scripts/profile
+# source ~/bash_scripts/profile
 
 # for emacs, set .bashrc to source ~/.bashprofile; cd
 
