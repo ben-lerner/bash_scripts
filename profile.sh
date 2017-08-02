@@ -1,7 +1,10 @@
 # set .bash_profile to:
-# source ~/Dropbox/bash_scripts/profile
+# source ~/gdrive/bash_scripts/profile
 
-# for emacs, set .bashrc to source ~/.bashprofile; cd
+# for emacs to source correctly
+if [ ! -f ~/.bashrc ]; then
+    echo "source ~/.bash_profile; cd" > ~/.bashrc
+fi
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
@@ -70,6 +73,7 @@ export PYLINTRC=~/Dropbox/.pylintrc
 # alias nls="/bin/ls" # normal ls
 
 alias c="clear"
+alias cdd="cd ~/gdrive"
 
 # util
 alias diff="colordiff"
@@ -98,7 +102,7 @@ alias deploy="git push heroku master" # this is so cool!
 
 # misc
 alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
-eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
 ulimit -n 8192
 
 # emacs settings
