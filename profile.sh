@@ -98,7 +98,7 @@ alias deploy="git push heroku master" # this is so cool!
 
 # misc
 alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
-eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
 ulimit -n 8192
 
 # emacs settings
