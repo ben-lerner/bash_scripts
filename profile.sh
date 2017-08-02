@@ -1,5 +1,5 @@
 # set .bash_profile to:
-# source ~/gdrive/bash_scripts/profile
+# source ~/bash_scripts/profile
 
 # for emacs to source correctly
 if [ ! -f ~/.bashrc ]; then
