@@ -107,6 +107,13 @@ export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 # find by name
 alias f="find . -type f -name"
 
+# clipboard
+if [[ "$(uname)" == "Darwin" ]]; then
+    alias clipboard=pbcopy
+elif [[ "$(uname)" == "Linux" ]]; then
+    alias clipboard=xsel -ib
+fi
+
 # Rust
 # export PATH=$PATH:/Users/bl/.cargo/bin
 
