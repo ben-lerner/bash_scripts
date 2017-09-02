@@ -107,13 +107,25 @@ export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 # find by name
 alias f="find . -type f -name"
 
+# Rust
+# export PATH=$PATH:/Users/bl/.cargo/bin
+
+# time each command
+
+function timer_start {
+    timer=${timer:-$SECONDS}
+}
+
+function timer_stop {
+    timer_show=$(($SECONDS - $timer))
+    unset timer
+}
+
+trap 'timer_start' DEBUG
+
 # git prompt
 source "$DIR/git-prompt.sh"
 
-#export GIT_PS1_STATESEPARATOR="ababab" # doesn't work?
 export GIT_PS1_SHOWCOLORHINTS="true"
 export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose
-export PROMPT_COMMAND='__git_ps1 "\u:\W" " [λ] "'
-
-# Rust
-# export PATH=$PATH:/Users/bl/.cargo/bin
+export PROMPT_COMMAND='timer_stop; __git_ps1 "[${timer_show} s] \W" " [λ] "; timer_stop'
