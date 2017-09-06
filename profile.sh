@@ -30,7 +30,7 @@ alias br="git branch"
 alias branch_times='for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
 function gcp() { git commit -am "$1"; git push; }
 alias push="git push"
-alias pull="git pull --all"
+alias pull="git pull"
 alias merge="git merge"
 alias gmv="git mv"
 alias continue="git rebase --continue"
@@ -111,7 +111,7 @@ alias f="find . -type f -name"
 if [[ "$(uname)" == "Darwin" ]]; then
     alias clipboard=pbcopy
 elif [[ "$(uname)" == "Linux" ]]; then
-    alias clipboard=xsel -ib
+    alias clipboard="xsel -ib"
 fi
 
 # Rust
