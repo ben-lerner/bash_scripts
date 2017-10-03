@@ -101,8 +101,8 @@ alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
 ulimit -n 8192
 
 # emacs settings
-alias emacsclient=ec
 export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
+alias e="emacsclient -nc"
 
 # find by name
 alias f="find . -type f -name"
