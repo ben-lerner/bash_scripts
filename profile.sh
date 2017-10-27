@@ -19,6 +19,8 @@ export PATH=/usr/local/bin:~/bin:/usr/texbin:$PATH
 # ripgrep
 export PATH=/Users/bl/ripgrep/target/release:$PATH
 alias rg="rg -i"
+alias rg1="rg --maxdepth 1"
+alias ag1="ag --depth 1"
 
 # git
 alias m="master"
