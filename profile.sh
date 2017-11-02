@@ -52,7 +52,7 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # clojure
 alias repl="lein repl"
-alias cl="lein exec"
+alias clj="lein exec"
 alias lrun="lein run"
 alias lmake="lein uberjar"
 
