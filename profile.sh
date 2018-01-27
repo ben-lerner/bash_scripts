@@ -37,7 +37,7 @@ alias merge="git merge"
 alias gmv="git mv"
 alias continue="git rebase --continue"
 alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
-alias log="git log --abbrev-commit"
+alias log="git log --abbrev-commit --pretty=oneline"
 function land() { arc land $(git_branch_name) --onto master; }
 alias rb="git rebase"
 function set_upstream() { push --set-upstream origin $(git_branch_name); }
@@ -156,3 +156,13 @@ source "$DIR/git-prompt.sh"
 export GIT_PS1_SHOWCOLORHINTS="true"
 export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose
 export PROMPT_COMMAND='timer_stop; __git_ps1 "${timer_show}\W" " [λ] "; timer_stop'
+
+# rd (read): cat or ls depending on file type
+function rd {
+    _last_arg="${@: -1}"
+    if [[ -f $_last_arg ]]; then
+        cat "$@"
+    else
+        ls "$@"
+    fi
+}
