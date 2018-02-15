@@ -105,6 +105,7 @@ ulimit -n 8192
 # emacs settings
 export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
 alias e="emacsclient -nc"
+alias emacs-debug="/Applications/Emacs.app/Contents/MacOS/Emacs --debug-init"
 
 # find by name
 alias f="find . -type f -name"
