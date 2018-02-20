@@ -167,3 +167,13 @@ function rd {
         ls "$@"
     fi
 }
+
+function clj-app {
+    # set up new clj-app
+    lein new app $1
+    rm $1/.hgignore
+    # set up cider-compatible test layout
+    mkdir $1/src/$1/test
+    mv $1/test/$1/core_test.clj $1/src/$1/test
+    rm -rf $1/test
+}
