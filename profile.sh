@@ -160,9 +160,17 @@ export PROMPT_COMMAND='timer_stop; __git_ps1 "${timer_show}\W" " [λ] "; timer_s
 
 # rd (read): cat or ls depending on file type
 function rd {
-    _last_arg="${@: -1}"
-    if [[ -f $_last_arg ]]; then
-        cat "$@"
+    local arg=$1
+    if [[ -f "${arg}" ]]; then
+        if [[ "$2" = "-h" ]]; then    # head
+            head -n $3 ${arg}
+        elif [[ "$2" = "-t" ]]; then  # tail
+            tail -n $3 ${arg}
+        elif [[ "$2" = "-c" ]]; then  # cat
+            cat ${arg}
+        else                          # default
+            head -n 40 ${arg}
+        fi
     else
         ls "$@"
     fi
