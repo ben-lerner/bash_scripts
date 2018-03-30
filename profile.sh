@@ -76,6 +76,7 @@ alias cdd="cd ~/gdrive"
 alias diff="colordiff"
 # tunnel host port
 function ssht() { pkill -f $2:localhost:$2; ssh -fNL $2:localhost:$2 $1; }
+function cd-new() { mkdir -p $1; cd $1; }
 
 # prompt for overwrite
 alias cp="cp -i"
