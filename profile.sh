@@ -157,7 +157,7 @@ source "$DIR/git-prompt.sh"
 
 export GIT_PS1_SHOWCOLORHINTS="true"
 #export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose  ## how does this comment work?
-export PROMPT_COMMAND='timer_stop; __git_ps1 "${timer_show}" " \W (λ) "; timer_stop'
+export PROMPT_COMMAND='timer_stop; __git_ps1 "${timer_show}" "\W (λ) "; timer_stop'
 
 # rd (read): cat or ls depending on file type
 function rd {
