@@ -186,3 +186,34 @@ function clj-app {
     mv $1/test/$1/core_test.clj $1/src/$1/test
     rm -rf $1/test
 }
+
+# git navigation
+function last-edited-file {
+    # get the last-edited file in a git directory
+    in_git_dir=$(git rev-parse --is-inside-work-tree 2> /dev/null)
+    if [[ $in_git_dir = "true" ]]; then
+        # find most recently edited file. compare to HEAD~1, not HEAD, in case we haven't
+        # touched anything yet.
+        echo $(git diff HEAD~1 --name-only -z |
+                   xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {} |
+                   sort -r | head -1 |
+                   rev | cut -d ' ' -f1 | rev)  # reverse before and after cut to get last field
+    else
+        echo 'not in git directory'
+        exit 1
+    fi
+}
+
+function gd {
+    in_git_dir=$(git rev-parse --is-inside-work-tree 2> /dev/null)
+    if [[ $in_git_dir = "true" ]]; then
+        if [[ $1 = "@" ]]; then  # go to last-edited dir
+            cd $(dirname $(last-edited-file))
+        else  # go to top-level dir
+            cd $(git rev-parse --show-toplevel)
+        fi
+    else
+        echo 'not in git directory'
+        exit 1
+    fi
+}
