@@ -37,7 +37,7 @@ alias merge="git merge"
 alias gmv="git mv"
 alias continue="git rebase --continue"
 alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
-alias log="git log --abbrev-commit --pretty=oneline"
+alias log="git log --abbrev-commit --pretty=oneline -10"
 function land() { arc land $(git_branch_name) --onto master; }
 alias rb="git rebase"
 function set_upstream() { push --set-upstream origin $(git_branch_name); }
