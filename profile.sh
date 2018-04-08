@@ -27,7 +27,7 @@ alias m="master"
 alias gdiff="git diff"
 function co() {
     if $(git diff --quiet); then
-        git checkout $a
+        git checkout $@
     else
         echo "Error: working tree not clean"
     fi
