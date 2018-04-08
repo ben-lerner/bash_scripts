@@ -25,7 +25,13 @@ alias ag1="ag --depth 1"
 # git
 alias m="master"
 alias gdiff="git diff"
-alias co="git checkout"
+function co() {
+    if $(git diff --quiet); then
+        git checkout $a
+    else
+        echo "Error: working tree not clean"
+    fi
+}
 alias add="git add"
 alias gc="git commit -am"
 alias br="git branch"
