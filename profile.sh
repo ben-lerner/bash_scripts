@@ -32,6 +32,14 @@ function co() {
         echo "Error: working tree not clean"
     fi
 }
+
+function _branches () {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    COMPREPLY=( $(compgen -W "$(git branch | sed s/^..//)" -- $cur) )
+}
+
+complete -F _branches co
+
 alias add="git add"
 alias gc="git commit -am"
 alias br="git branch"
@@ -41,12 +49,11 @@ alias push="git push"
 alias pull="git pull"
 alias merge="git merge"
 alias gmv="git mv"
-alias continue="git rebase --continue"
-alias git_branch_name="git branch | grep '*' | awk '{print \$2}'"
+alias git_br_name="git rev-parse --abbrev-ref HEAD"
 alias log="git log --abbrev-commit --pretty=oneline -10"
-function land() { arc land $(git_branch_name) --onto master; }
+function land() { arc land $(git_br_name) --onto master; }
 alias rb="git rebase"
-function set_upstream() { push --set-upstream origin $(git_branch_name); }
+function set_upstream() { push --set-upstream origin $(git_br_name); }
 function makebranch() { co -b $1; set_upstream; }
 function cleanbranch() { br -d $1; push origin :$1; }
 
@@ -69,14 +76,10 @@ alias py="python"
 alias py3="python3"
 function ipdb() { ipython --pdb --c="%run $@"; }
 alias cprofile="python -m cProfile"
-alias d="deactivate"
 export PYLINTRC=~/Dropbox/.pylintrc
 
 # alias ls="gls --ignore='*.pyc' --color"
 # alias nls="/bin/ls" # normal ls
-
-alias c="clear"
-alias cdd="cd ~/gdrive"
 
 # util
 alias diff="colordiff"
@@ -179,7 +182,7 @@ function rd {
             head -n 40 ${arg}
         fi
     else
-        ls "$@"
+        ls -I "*.pyc" "$@"
     fi
 }
 
