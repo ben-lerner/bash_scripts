@@ -33,17 +33,42 @@ function co() {
     fi
 }
 
-function _branches () {
-    local cur=${COMP_WORDS[COMP_CWORD]}
-    COMPREPLY=( $(compgen -W "$(git branch | sed s/^..//)" -- $cur) )
+function _branches() {
+    echo $((git branch 2>/dev/null) | sed s/^..//)
 }
 
-complete -F _branches co
+function _co () {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    if [ "$COMP_CWORD" -eq "1" ]; then {
+        COMPREPLY=( $(compgen -W "$(_branches)" -- $cur) )
+    }
+    else {
+        COMPREPLY=( $(compgen -f -- $cur) )
+    }
+    fi
+}
+
+complete -F _co co
+
+alias br="git branch"
+
+function _br () {
+    # autocomplete branches for -D
+    if [ "$COMP_CWORD" -eq "2" ]; then {
+        local cur=${COMP_WORDS[COMP_CWORD]}
+        COMPREPLY=( $(compgen -W "$(_branches)" -- $cur) )
+    }
+    else {
+        COMPREPLY=()
+    }
+    fi
+}
+
+complete -F _br br
 
 alias add="git add"
 alias gc="git commit -am"
-alias br="git branch"
-alias branch_times='for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
+alias branch_times='for k in $(_branches); do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
 function gcp() { git commit -am "$1"; git push; }
 alias push="git push"
 alias pull="git pull"
