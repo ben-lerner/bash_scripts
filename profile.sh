@@ -234,7 +234,6 @@ function last-edited-file {
                    rev | cut -d ' ' -f1 | rev)  # reverse before and after cut to get last field
     else
         echo 'not in git directory'
-        exit 1
     fi
 }
 
@@ -248,6 +247,5 @@ function gd {
         fi
     else
         echo 'not in git directory'
-        exit 1
     fi
 }
