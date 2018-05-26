@@ -207,7 +207,11 @@ function rd {
             head -n 40 ${arg}
         fi
     else
-        ls -I "*.pyc" "$@"
+        if [[ "$(uname)" == "Darwin" ]]; then
+            ls "$@"
+        else
+            ls -I "*.pyc" "$@"
+        fi
     fi
 }
 
