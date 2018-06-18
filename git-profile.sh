@@ -60,6 +60,15 @@ function cleanbranch() { br -d $1; push origin :$1; }
 function land() { arc land $(git_br_name) --onto master; }
 
 # navigation
+function repos {
+    for dir in $(ls -1 ${HOME});
+    do
+        if [[ -d "${HOME}/${dir}/.git" ]]; then
+            echo "${dir}"
+        fi
+    done
+}
+
 function last-edited-file {
     # get the last-edited file in a git directory
     in_git_dir=$(git rev-parse --is-inside-work-tree 2> /dev/null)
@@ -71,17 +80,29 @@ function last-edited-file {
                    sort -r | head -1 |
                    rev | cut -d ' ' -f1 | rev)  # reverse before and after cut to get last field
     else
-        echo 'not in git directory'
+        echo "not in git directory"
     fi
 }
 
 function gd {
-    # find active repos
-    for dir in $(ls -d */ | cut -f1 -d'/');
-    do echo ${dir};
-    done
-    exit 0
+    if [[ -n $1 ]] && [[ $1 != "@" ]]; then  # navigate to directory
+        target_dir=$1
+        if [[ ${target_dir} = *@ ]]; then  # parse "@"
+            set -- @  # set $1 to @
+            target_dir=${target_dir%?}
+        fi
+        if [[ $2 = "@" ]]; then  # work for "foo@" and "foo @"
+            set -- @
+        fi
+        if [[ -d "${HOME}/${target_dir}/.git" ]]; then
+            cd "${HOME}/${target_dir}"
+        else
+            echo "~/${target_dir} does not exist or is not a git repo"
+            return
+        fi
+    fi
 
+    # navigate within directory
     in_git_dir=$(git rev-parse --is-inside-work-tree 2> /dev/null)
     if [[ $in_git_dir = "true" ]]; then
         if [[ $1 = "@" ]]; then  # go to last-edited dir
@@ -90,6 +111,18 @@ function gd {
             cd $(git rev-parse --show-toplevel)
         fi
     else
-        echo 'not in git directory'
+        echo "not in git directory"
+        return
     fi
 }
+
+function _gd {
+    local cur=${COMP_WORDS[COMP_CWORD]}
+    if [ "$COMP_CWORD" -eq "1" ]; then
+        COMPREPLY=( $(compgen -W "$(repos)" -- $cur) )
+    else
+        COMPREPLY=()
+    fi
+}
+
+complete -F _gd gd
