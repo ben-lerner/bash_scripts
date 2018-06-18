@@ -76,7 +76,11 @@ function last-edited-file {
 }
 
 function gd {
-    # find current repos
+    # find active repos
+    for dir in $(ls -d */ | cut -f1 -d'/');
+    do echo ${dir};
+    done
+    exit 0
 
     in_git_dir=$(git rev-parse --is-inside-work-tree 2> /dev/null)
     if [[ $in_git_dir = "true" ]]; then
