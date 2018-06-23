@@ -84,7 +84,8 @@ function last-edited-file {
     fi
 }
 
-function gd {
+# navigate git repos
+function nv {
     if [[ -n $1 ]] && [[ $1 != "@" ]]; then  # navigate to directory
         target_dir=$1
         if [[ ${target_dir} = *@ ]]; then  # parse "@"
@@ -116,7 +117,7 @@ function gd {
     fi
 }
 
-function _gd {
+function _nv {
     local cur=${COMP_WORDS[COMP_CWORD]}
     if [ "$COMP_CWORD" -eq "1" ]; then
         COMPREPLY=( $(compgen -W "$(repos)" -- $cur) )
@@ -125,4 +126,4 @@ function _gd {
     fi
 }
 
-complete -F _gd gd
+complete -F _nv nv
