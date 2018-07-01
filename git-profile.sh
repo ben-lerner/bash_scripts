@@ -1,7 +1,11 @@
 alias m="master"
 alias gdiff="git diff"
 function co() {
-    if $(git diff --quiet); then
+    # check for clean directory unless running with co -f
+    if [[ "$1" == "-f" ]]; then
+        shift  # consume '-f'
+        git checkout $@
+    elif $(git diff --quiet); then
         git checkout $@
     else
         echo "Error: working tree not clean"
@@ -14,7 +18,10 @@ function _branches() {
 
 function _co () {
     local cur=${COMP_WORDS[COMP_CWORD]}
-    if [ "$COMP_CWORD" -eq "1" ]; then {
+    if [[ "$COMP_CWORD" -eq "1" ]] ||
+       ([[ "$COMP_CWORD" -eq "2" ]] &&
+        [[ "$COMP_WORDS[1]" == "-f" ]]); then {
+
         COMPREPLY=( $(compgen -W "$(_branches)" -- $cur) )
     }
     else {
