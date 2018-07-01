@@ -20,7 +20,7 @@ function _co () {
     local cur=${COMP_WORDS[COMP_CWORD]}
     if [[ "$COMP_CWORD" -eq "1" ]] ||
        ([[ "$COMP_CWORD" -eq "2" ]] &&
-        [[ "$COMP_WORDS[1]" == "-f" ]]); then {
+        [[ "${COMP_WORDS[1]}" == "-f" ]]); then {
 
         COMPREPLY=( $(compgen -W "$(_branches)" -- $cur) )
     }
