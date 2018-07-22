@@ -39,10 +39,10 @@ function clj-app {  # set up new clj-app
 }
 
 # python
-alias p="ipython"
-alias p3="ipython3"
-alias py="python"
-alias py3="python3"
+alias p="ipython3"
+alias p2="ipython"
+alias py="python3"
+alias py2="python"
 function ipdb() { ipython --pdb --c="%run $@"; }
 alias cprofile="python -m cProfile"
 export PYLINTRC=~/Dropbox/.pylintrc
