@@ -15,8 +15,8 @@ fi
 # ripgrep
 export PATH=/Users/bl/ripgrep/target/release:$PATH
 alias rg="rg -i"
-alias rg1="rg --maxdepth 1"
-alias ag1="ag --depth 1"
+alias rg0="rg --maxdepth 0"
+alias ag0="ag --depth 0"
 
 # go
 export GOPATH=~/go
