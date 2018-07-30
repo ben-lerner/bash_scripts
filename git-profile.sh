@@ -82,10 +82,9 @@ function last-edited-file {
     if [[ $in_git_dir = "true" ]]; then
         # find most recently edited file. compare to HEAD~1, not HEAD, in case we haven't
         # touched anything yet.
-        echo $(git diff HEAD~1 --name-only -z |
-                   xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {} |
-                   sort -r | head -1 |
-                   rev | cut -d ' ' -f1 | rev)  # reverse before and after cut to get last field
+        echo $(git diff --relative HEAD~1 --name-only |
+                   while read file; do echo "$(date -r $file +%s) $file"; done |
+                   sort -r | head -1 | cut -d' ' -f2)
     else
         echo "not in git directory"
     fi
