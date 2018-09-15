@@ -23,21 +23,6 @@ export GOPATH=~/go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
-# clojure
-alias repl="lein repl"
-alias clj="lein exec"
-alias lrun="lein run"
-alias lmake="lein uberjar"
-
-function clj-app {  # set up new clj-app
-    lein new app $1
-    rm $1/.hgignore
-    # set up cider-compatible test layout
-    mkdir $1/src/$1/test
-    mv $1/test/$1/core_test.clj $1/src/$1/test
-    rm -rf $1/test
-}
-
 # python
 alias p="ipython3"
 alias p2="ipython"
