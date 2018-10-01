@@ -53,7 +53,7 @@ alias gc="git commit -am"
 alias branch_times='for k in $(_branches); do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
 function gcp() { git commit -am "$1"; git push; }
 alias push="git push"
-alias pull="git pull"
+alias sync="git pull"
 alias merge="git merge"
 alias gmv="git mv"
 alias git_br_name="git rev-parse --abbrev-ref HEAD"
