@@ -1,5 +1,5 @@
 alias m="master"
-alias gdiff="git diff"
+alias g="git"
 function co() {
     # check for clean directory unless running with co -f
     if [[ "$1" == "-f" ]]; then

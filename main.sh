@@ -12,6 +12,9 @@ if [ ! -f ~/.bashrc ]; then
     echo "source ~/.bash_profile; cd" > ~/.bashrc
 fi
 
+# clojure
+alias "deps-update"="clojure -Aoutdated --update"
+
 # ripgrep
 export PATH=/Users/bl/ripgrep/target/release:$PATH
 alias rg="rg -i"
