@@ -67,12 +67,30 @@ alias emacs-debug="/Applications/Emacs.app/Contents/MacOS/Emacs --debug-init"
 # find by name
 alias f="find . -type f -name"
 
-# clipboard
-if [[ "$(uname)" == "Darwin" ]]; then
-    alias clipboard=pbcopy
-elif [[ "$(uname)" == "Linux" ]]; then
-    alias clipboard="xsel -ib"
-fi
+# clipboard works with pipes:
+# foo | clipboard will write stdin to the clipboard
+# clipboard | bar will write clipboard to stdout
+# todo: linux paste
+function clipboard {
+    ## input
+    if [[ "$(uname)" == "Darwin" ]]; then
+        alias read_clipboard=pbcopy
+    elif [[ "$(uname)" == "Linux" ]]; then
+        alias read_clipboard="xsel -ib"
+    fi
+
+    if ! tty -s; then  # input is piped
+        # drop last newline
+        tr -d '\n' | $(read_clipboard)
+    fi
+
+    ## output
+    ## todo: linux paste
+    if [ ! -t 1 ]; then  # output is piped
+        pbpaste
+        echo # newline
+    fi
+}
 
 source "${DIR}/prompt.sh"
 
