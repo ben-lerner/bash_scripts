@@ -2,7 +2,11 @@
 # source ~/bash_scripts/main.sh
 
 
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+if [ "$SHELL" = "/bin/zsh" ]; then
+    DIR=${0:a:h}
+else
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+fi
 
 source "${DIR}/vars.sh"
 source "${DIR}/git-profile.sh"
@@ -56,11 +60,10 @@ alias deploy="git push heroku master" # this is so cool!
 
 # misc
 alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
-# eval "$(thefuck --alias)"
 ulimit -n 8192
 
 # emacs settings
-export EDITOR=~/bin/edit # https://www.emacswiki.org/emacs/EmacsClient
+export EDITOR="emacsclient -c"
 alias e="emacsclient -nc"
 alias emacs-debug="/Applications/Emacs.app/Contents/MacOS/Emacs --debug-init"
 
