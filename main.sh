@@ -20,15 +20,7 @@ fi
 alias "deps-update"="clojure -Aoutdated --update"
 
 # ripgrep
-export PATH=/Users/bl/ripgrep/target/release:$PATH
-alias rg="rg -i"
-alias rg0="rg --maxdepth 0"
 alias ag0="ag --depth 0"
-
-# go
-export GOPATH=~/go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # python
 alias p="ipython3"
@@ -48,9 +40,6 @@ function cd-new() { mkdir -p $1; cd $1; }
 # prompt for overwrite
 alias cp="cp -i"
 alias mv="mv -i"
-
-# Settings PATH for Python 2.7
-export PATH="/Library/Frameworks/Python.framework/Versions/2.7/bin:${PATH}"
 
 # autoenv
 source "$DIR/autoenv.sh"
