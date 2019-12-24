@@ -109,7 +109,16 @@ function rd {
 }
 
 function ltx {
-    pdflatex $1
+    if [[ $# -eq 0 ]]; then
+        if [[ $(ls -l | grep tex | wc -l) -ne 1 ]]; then
+            echo "ERROR: more than one latex file, please specify"
+            return
+        fi
+        f=$(ls -l | grep tex | rev | cut -d' ' -f1 | rev)
+    else
+        f=$1
+    fi
+    pdflatex $f
     rm "${1%.*}.log"
     rm "${1%.*}.aux"
 }
