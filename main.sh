@@ -24,10 +24,11 @@ alias ag0="ag --depth 0"
 
 # python
 alias p="ipython3"
-alias p2="ipython"
+# alias p2="ipython"
 alias py="python3"
-alias py2="python"
-function ipdb() { ipython --pdb --c="%run $@"; }
+# alias py2="python"
+alias pip="pip3"
+function ipdb() { ipython3 --pdb --c="%run $@"; }
 alias cprofile="python -m cProfile"
 export PYLINTRC=~/Dropbox/.pylintrc
 
@@ -119,8 +120,10 @@ function ltx {
         f=$1
     fi
     pdflatex $f
-    rm "${1%.*}.log"
-    rm "${1%.*}.aux"
+    filename=${f%.tex}
+    rm ${filename}.log
+    rm ${filename}.aux
+    open ${filename}.pdf
 }
 
 # linux alert
