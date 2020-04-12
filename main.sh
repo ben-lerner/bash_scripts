@@ -119,12 +119,29 @@ function ltx {
     else
         f=$1
     fi
-    pdflatex $f
     filename=${f%.tex}
+    pdflatex $f && open ${filename}.pdf
     rm ${filename}.log
     rm ${filename}.aux
-    open ${filename}.pdf
 }
 
 # linux alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+echo ' ,-.      .-,'
+echo ' |-.\ __ /.-|'
+echo ' \  `    `  /'
+echo ' / _     _  \'
+echo ' | _`o  o _ |'
+echo ' '._=/  \=_.''
+echo '   {`\()/`}`\'
+echo '   {      }  \'
+echo '   |{    }    \'
+echo '   \ '--'   .- \'
+echo '   |-      /    \'
+echo '   | | | | |     ;'
+echo '   | | |.;.,..__ |'
+echo ' .-'';`         `|'
+echo '/    |           /'
+echo '`-../____,..----` '
+echo ''
