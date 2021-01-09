@@ -50,7 +50,6 @@ alias deploy="git push heroku master" # this is so cool!
 
 # misc
 alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
-ulimit -n 8192
 
 # emacs settings
 export EDITOR="emacsclient -c"
