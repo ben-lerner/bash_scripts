@@ -24,9 +24,7 @@ alias ag0="ag --depth 0"
 
 # python
 alias p="ipython3"
-# alias p2="ipython"
 alias py="python3"
-# alias py2="python"
 alias pip="pip3"
 function ipdb() { ipython3 --pdb --c="%run $@"; }
 alias cprofile="python -m cProfile"
@@ -35,7 +33,11 @@ export PYLINTRC=~/Dropbox/.pylintrc
 # util
 alias diff="colordiff"
 # tunnel host port
-function ssht() { pkill -f $2:localhost:$2; ssh -fNL $2:localhost:$2 $1; }
+# e.g. ssht example.com 8080
+function kill-ssht() { pkill -f $1:localhost:$1; }
+function ssht() { kill-ssht $2; ssh -fNL $2:localhost:$2 ubuntu@$1; }
+
+
 function cd-new() { mkdir -p $1; cd $1; }
 
 # prompt for overwrite
@@ -127,7 +129,7 @@ function ltx {
 # linux alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-alias start-tps='cd ~/tps; clj -X server/run-local'
+alias start-tps='cd ~/tps; clj -X server/start :port 3000'
 
 function fox {
     echo ' ,-.      .-,'
