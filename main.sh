@@ -23,11 +23,11 @@ alias "deps-update"="clojure -Aoutdated --update"
 alias ag0="ag --depth 0"
 
 # python
-alias p="ipython3"
-alias py="python3"
+alias python="python3"
 alias pip="pip3"
+alias py="python3"
 function ipdb() { ipython3 --pdb --c="%run $@"; }
-alias cprofile="python -m cProfile"
+alias cprofile="python3 -m cProfile"
 export PYLINTRC=~/Dropbox/.pylintrc
 
 # util
@@ -51,7 +51,7 @@ source "$DIR/autoenv.sh"
 alias deploy="git push heroku master" # this is so cool!
 
 # misc
-alias makepwd="java -jar ~/Dropbox/shibboleth/make.jar"
+alias makepwd="python3 ~/Dropbox/shibboleth/make.py"
 
 # emacs settings
 export EDITOR="emacsclient -c"
@@ -130,6 +130,7 @@ function ltx {
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 alias start-tps='cd ~/tps; clj -X server/start :port 3000'
+alias old-start-tps='cd ~/tps; clj -X server/run-local'
 
 function fox {
     echo ' ,-.      .-,'
