@@ -151,3 +151,6 @@ function fox {
     echo '`-../____,..----` '
     echo ''
 }
+
+# this must be sourced last
+source "${DIR}/bash-preexec.sh"

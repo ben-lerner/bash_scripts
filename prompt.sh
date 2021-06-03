@@ -1,33 +1,37 @@
 # time each command
 
+function echo_right {
+    # COLUMNS doesn't quite work in emacs shell
+    printf "%$((${COLUMNS}-4))s\n" "$1"
+}
+
 function timer_start {
-    timer=${timer:-$SECONDS}
+    START_TIME=$(date "+%s")
 }
 
-function timer_stop {
-    timer_show=$(($SECONDS - $timer))
-    if [ "$timer_show" -eq 0 ]; then
-        timer_show=""
-    elif [ "$timer_show" -lt "60" ]; then
-        timer_show=$timer_show$"s"
-    elif [ "$timer_show" -lt "570" ]; then
-        timer_show=$(($timer_show / 60))"m "$(($timer_show % 60))"s"
-    elif [ "$timer_show" -lt "3570" ]; then
-        timer_show=$(($timer_show + 30)) # round
-        timer_show=$(($timer_show / 60))"m"
+function timer_print {
+    if [ -z $START_TIME ]; then  # first prompt
+       return 0
+    fi
+    runtime=$(($(date "+%s") - $START_TIME))
+    if [ "$runtime" -eq 0 ]; then
+        runtime=""
+    elif [ "$runtime" -lt "60" ]; then
+        runtime=$runtime$"s"
+    elif [ "$runtime" -lt "570" ]; then
+        runtime=$(($runtime / 60))"m "$(($runtime % 60))"s"
+    elif [ "$runtime" -lt "3570" ]; then
+        runtime=$(($runtime + 30)) # round
+        runtime=$(($runtime / 60))"m"
     else
-        timer_show=$(($timer_show + 30)) # round
-        timer_show=$(($timer_show / 3600))"h "$(( ($timer_show % 3600) / 60 ))"m"
+        runtime=$(($runtime + 30)) # round
+        runtime=$(($runtime / 3600))"h "$(( ($runtime % 3600) / 60 ))"m"
     fi
 
-    if [ "$timer_show" != "" ]; then
-        timer_show=$timer_show" :: "
+    if [ "$runtime" != "" ]; then
+        echo_right "Ran in $runtime"
     fi
-
-    unset timer
 }
-
-trap 'timer_start' DEBUG
 
 # git prompt
 source "$DIR/git-prompt.sh"
@@ -53,4 +57,6 @@ vterm_prompt_end(){
 
 export GIT_PS1_SHOWCOLORHINTS="true"
 #export GIT_PS1_SHOWUPSTREAM="auto verbose"# verbose  ## how does this comment work?
-export PROMPT_COMMAND='timer_stop; __git_ps1 "${timer_show}" "\W (λ) "; timer_stop; vterm_prompt_end'
+
+preexec() { timer_start; }
+precmd() { timer_print; __git_ps1 "" "\W (λ) "; vterm_prompt_end; }
